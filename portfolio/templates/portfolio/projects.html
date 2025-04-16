@@ -1,0 +1,18 @@
+{% extends 'portfolio/base.html' %}
+{% load static %}
+
+{% block title %}
+  Projects - Portfolio
+{% endblock %}
+
+{% block content %}
+  <div class="projects-container mt-5 pt-4">
+    {% include 'portfolio/components/project_card.html' %}
+  </div>
+{% endblock %}
+
+<style>
+.projects-container {
+    margin-top: 80px !important;  /* Adjust this value based on your navbar height */
+}
+</style>

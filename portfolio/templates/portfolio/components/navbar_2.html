@@ -1,0 +1,80 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" aria-label="LP Portfolio Navbar">
+    <div class="container-fluid px-4">  <!-- Added horizontal padding -->
+        <button class="navbar-toggler" 
+                type="button" 
+                data-bs-toggle="collapse" 
+                data-bs-target="#LPnavbar" 
+                aria-controls="LPnavbar" 
+                aria-expanded="false" 
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-md-center" id="LPnavbar">
+            <ul class="navbar-nav gap-lg-4">  <!-- Added gap between items -->
+                <li class="nav-item">
+                    <a class="nav-link text-gradient py-2 px-lg-3" href="{% url 'portfolio:home' %}#home">
+                        Portfolio Home
+                    </a>
+                </li>
+                
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-gradient py-2 px-lg-3" 
+                       href="#" 
+                       id="navbarDropdown" 
+                       role="button" 
+                       data-bs-toggle="dropdown" 
+                       aria-expanded="false">
+                        Projects
+                    </a>
+                    <div class="dropdown-menu py-2" aria-labelledby="navbarDropdown">  <!-- Added dropdown padding -->
+                        <a class="dropdown-item py-2 px-3" href="{% url 'portfolio:projects' %}">  <!-- Item padding -->
+                            All Projects
+                        </a>
+                    </div>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link text-gradient py-2 px-lg-3" href="{% url 'portfolio:home' %}#about-me">
+                        About Me
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link text-gradient py-2 px-lg-3" href="{% url 'portfolio:home' %}#contact-me">
+                        Contact
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<style>
+.nav-link.text-gradient:hover {
+    color: #198754 !important;
+    background-image: none;
+}
+
+.dropdown-item:hover {
+    background-color: #198754;
+    color: white;
+}
+
+.navbar-nav .nav-item:hover .nav-link {
+    color: #198754 !important;
+}
+
+/* Added spacing improvements */
+@media (min-width: 992px) {
+    .navbar-nav .nav-link {
+        margin: 0 0.75rem;
+    }
+    .dropdown-menu {
+        margin-top: 0.5rem !important;
+    }
+    .navbar-nav {
+        padding: 0.5rem 0;
+    }
+}
+</style>

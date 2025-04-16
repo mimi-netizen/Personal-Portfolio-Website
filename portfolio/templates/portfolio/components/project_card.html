@@ -1,0 +1,296 @@
+<section class="projects-section py-5 bg-light">
+    <div class="container">
+        {% if current_projects %}
+        <div class="current-projects mb-5">
+            <div class="text-center mb-4" data-aos="fade-up">
+                <h3 class="display-6 fw-bold text-success">
+                    <i class="bi bi-gear-wide-connected me-2"></i>Currently Working On
+                </h3>
+                <div class="title-underline mx-auto"></div>
+            </div>
+            
+            <div class="row row-cols-1 row-cols-sm-2 g-3 g-md-4">
+                {% for project in current_projects %}
+                    <div class="col" data-aos="fade-up">
+                        <div class="card h-100 project-card border-success border-2 shadow-sm">
+                            <div class="card-img-wrapper">
+                                {% if project.image %}
+                                    <img src="{{ project.image.url }}" 
+                                         class="card-img-top" 
+                                         alt="{{ project.title }}"
+                                         loading="lazy">
+                                {% endif %}
+                                <div class="card-img-overlay d-flex align-items-end">
+                                    <div class="overlay-content w-100 text-center">
+                                        <a href="{% url 'portfolio:project_detail' pk=project.pk %}" 
+                                           class="btn btn-success btn-sm">
+                                            View Project
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold mb-2">{{ project.title }}</h5>
+                                <p class="card-text text-muted">{{ project.description|truncatechars:150 }}</p>
+                                
+                                <div class="technologies mt-3">
+                                    {% for technology in project.technologies.all %}
+                                        <img src="{{ technology.icon.url }}" 
+                                             alt="{{ technology.name }}" 
+                                             title="{{ technology.name }}" 
+                                             class="tech-icon me-2">
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            {% if project.github or project.website %}
+                                <div class="card-footer bg-transparent border-0 text-center">
+                                    {% if project.github %}
+                                        <a href="{{ project.github }}" 
+                                           target="_blank" 
+                                           class="btn btn-outline-dark btn-sm me-2">
+                                            <i class="bi bi-github me-2"></i>Code
+                                        </a>
+                                    {% endif %}
+                                    {% if project.website %}
+                                        <a href="{{ project.website }}" 
+                                           target="_blank" 
+                                           class="btn btn-outline-success btn-sm">
+                                            <i class="bi bi-globe me-2"></i>Live Site
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="completed-projects">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h2 class="display-4 fw-bold">
+                    {% if is_homepage %}
+                        Featured Projects
+                    {% else %}
+                        All Projects
+                    {% endif %}
+                </h2>
+                <div class="title-underline mx-auto"></div>
+            </div>
+
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-3 g-md-4">
+                {% for project in completed_projects %}
+                    <div class="col" data-aos="fade-up" data-aos-delay="{{ forloop.counter0|add:1|stringformat:'d'}}00">  
+                        <div class="card h-100 project-card border-0 shadow-sm">
+                            <div class="card-img-wrapper">
+                                {% if project.image %}
+                                    <img src="{{ project.image.url }}" 
+                                         class="card-img-top" 
+                                         alt="{{ project.title }}"
+                                         loading="lazy">
+                                {% endif %}
+                                <div class="card-img-overlay d-flex align-items-end">
+                                    <div class="overlay-content w-100 text-center">
+                                        <a href="{% url 'portfolio:project_detail' pk=project.pk %}" 
+                                           class="btn btn-success btn-sm">
+                                            View Project
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body">
+                                <h5 class="card-title fw-bold mb-2">{{ project.title }}</h5>
+                                <p class="card-text text-muted">{{ project.description|truncatechars:150 }}</p>
+                                
+                                <div class="technologies mt-3">
+                                    {% for technology in project.technologies.all %}
+                                        <img src="{{ technology.icon.url }}" 
+                                             alt="{{ technology.name }}" 
+                                             title="{{ technology.name }}" 
+                                             class="tech-icon me-2">
+                                    {% endfor %}
+                                </div>
+                            </div>
+
+                            {% if project.github or project.website %}
+                                <div class="card-footer bg-transparent border-0 text-center">
+                                    {% if project.github %}
+                                        <a href="{{ project.github }}" 
+                                           target="_blank" 
+                                           class="btn btn-outline-dark btn-sm me-2">
+                                            <i class="bi bi-github me-2"></i>Code
+                                        </a>
+                                    {% endif %}
+                                    {% if project.website %}
+                                        <a href="{{ project.website }}" 
+                                           target="_blank" 
+                                           class="btn btn-outline-success btn-sm">
+                                            <i class="bi bi-globe me-2"></i>Live Site
+                                        </a>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+
+            {% if is_homepage %}
+                <div class="text-center mt-5" data-aos="fade-up">
+                    <a href="{% url 'portfolio:projects' %}" class="btn btn-lg btn-outline-success">
+                        View All Projects <i class="bi bi-arrow-right-circle ms-2"></i>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<style>
+.title-underline {
+    width: 80px;
+    height: 4px;
+    background: #198754;
+    margin-top: 1rem;
+}
+
+.project-card {
+    transition: transform 0.3s ease-in-out;
+    overflow: hidden;
+    margin-bottom: 1rem;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-wrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-img-wrapper img {
+    height: 180px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover .card-img-wrapper img {
+    transform: scale(1.05);
+}
+
+.card-img-overlay {
+    background: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover .card-img-overlay {
+    opacity: 1;
+}
+
+.card-body {
+    padding: 1rem;
+}
+
+.tech-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transition: transform 0.2s ease;
+}
+
+.tech-icon:hover {
+    transform: translateY(-2px);
+}
+
+/* Add hover styles */
+.btn-success:hover {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.btn-outline-success:hover {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.project-card .card-img-overlay a.btn-success:hover {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+/* Media Queries */
+@media (min-width: 576px) {
+    .card-img-wrapper img {
+        height: 200px;
+    }
+    
+    .tech-icon {
+        width: 22px;
+        height: 22px;
+    }
+    
+    .card-body {
+        padding: 1.25rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .card-img-wrapper img {
+        height: 220px;
+    }
+    
+    .tech-icon {
+        width: 25px;
+        height: 25px;
+    }
+}
+
+@media (min-width: 992px) {
+    .card-img-wrapper img {
+        height: 240px;
+    }
+}
+
+/* Responsive spacing classes */
+.projects-section {
+    padding: 2rem 0;
+}
+
+@media (min-width: 768px) {
+    .projects-section {
+        padding: 3rem 0;
+    }
+}
+
+@media (min-width: 992px) {
+    .projects-section {
+        padding: 4rem 0;
+    }
+}
+
+/* Responsive typography */
+.display-4 {
+    font-size: calc(1.6rem + 1.5vw);
+}
+
+.display-6 {
+    font-size: calc(1.2rem + 1vw);
+}
+
+.card-title {
+    font-size: 1.1rem;
+}
+
+@media (min-width: 768px) {
+    .card-title {
+        font-size: 1.25rem;
+    }
+}
+</style>
+

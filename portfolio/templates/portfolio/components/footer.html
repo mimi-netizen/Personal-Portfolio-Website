@@ -1,0 +1,90 @@
+<footer class="footer bg-dark text-white py-5 mt-5">
+    <div class="container">
+        <!-- Navigation Links -->
+        <div class="row mb-4">
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <h5 class="text-success fw-bold mb-3">Celyne Kydd</h5>
+                <p class="text-muted mb-0">DevOps Engineer & Full-Stack Developer</p>
+                <p class="text-muted">Building scalable solutions for tomorrow</p>
+            </div>
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <h6 class="text-white-50 text-uppercase mb-3">Quick Links</h6>
+                <ul class="list-unstyled footer-links">
+                    <li><a href="{% url 'portfolio:home' %}#home">Home</a></li>
+                    <li><a href="{% url 'portfolio:home' %}#about-me">About</a></li>
+                    <li><a href="{% url 'portfolio:projects' %}">Projects</a></li>
+                    <li><a href="{% url 'portfolio:home' %}#contact-me">Contact</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4">
+                <h6 class="text-white-50 text-uppercase mb-3">Connect</h6>
+                <div class="social-links">
+                    <a href="https://github.com/mimi-netizen" target="_blank" class="me-3" title="GitHub">
+                        <i class="bi bi-github"></i>
+                    </a>
+                    <a href="https://linkedin.com/in/celyne-kydd" target="_blank" class="me-3" title="LinkedIn">
+                        <i class="bi bi-linkedin"></i>
+                    </a>
+                    <a href="mailto:your.celynekydd@gmail.com" class="me-3" title="Email">
+                        <i class="bi bi-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Divider -->
+        <hr class="opacity-25">
+
+        <!-- Copyright -->
+        <div class="row mt-4">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="mb-0 text-muted">&copy; {% now "Y" %} Celyne Kydd. All rights reserved.</p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="mb-0 text-muted">Built with Django & Bootstrap</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+.footer {
+    position: relative;
+    margin-top: 5rem !important;  /* Increased top margin */
+}
+
+.footer-links a {
+    color: #adb5bd;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: block;
+    padding: 0.3rem 0;
+}
+
+.footer-links a:hover {
+    color: #198754;
+}
+
+.social-links a {
+    color: #adb5bd;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #198754;
+    transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+    .footer {
+        margin-top: 3rem !important;  /* Slightly less margin on mobile */
+        text-align: center;
+    }
+    
+    .social-links {
+        margin-top: 1rem;
+    }
+}
+</style>

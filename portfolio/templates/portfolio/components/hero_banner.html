@@ -1,0 +1,86 @@
+{% load static %}
+
+<section id="home" class="hero-section position-relative bg-dark text-light min-vh-100 d-flex align-items-center">
+    <div class="hero-pattern position-absolute w-100 h-100" style="background-image: url('data:image/svg+xml,%3Csvg width=\"20\" height=\"20\" xmlns=\"http://www.w3.org/2000/svg\"%3E%3Cpath d=\"M0 0h1v1H0zM19 19h1v1h-1z\" fill=\"rgba(255,255,255,0.05)\"%3E%3C/path%3E%3C/svg%3E');"></div>
+    
+    <div class="container position-relative">
+        <div class="row align-items-center gy-5">
+            <div class="col-lg-6 order-lg-1 order-2 text-center text-lg-start">
+                <div class="hero-content" data-aos="fade-up">
+                    <span class="badge bg-success mb-3 animated-badge">DevOps Engineer & Full Stack Developer</span>
+                    <h1 class="display-4 fw-bold mb-3">Hi, I'm Celyne!</h1>
+                    <h2 class="display-6 fw-bold mb-4 text-success">Welcome to my Code Lab</h2>
+                    <p class="lead mb-4 opacity-75">A glimpse into my coding journey, fueled by an unhealthy amount of coffee and a healthy dose of curiosity.</p>
+                    
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
+                        <a href="{% url 'portfolio:home' %}#projects-section" class="btn btn-success btn-lg px-4 fw-bold">
+                            View My Work <i class="bi bi-rocket-takeoff ms-2"></i>
+                        </a>
+                        <a href="{% url 'portfolio:home' %}#contact-me" class="btn btn-outline-light btn-lg px-4 fw-bold">
+                            Let's Connect <i class="bi bi-envelope-check ms-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 order-lg-2 order-1">
+                <div class="hero-image text-center" data-aos="fade-left">
+                    <img 
+                        src="{% static 'portfolio/images/headshot.png' %}" 
+                        class="img-fluid rounded-circle shadow-lg" 
+                        alt="Lucas Patriquin - DevOps Engineer & Full Stack Developer" 
+                        loading="lazy"
+                        width="400"
+                        height="400">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+.hero-section {
+    overflow: hidden;
+    padding: 6rem 0;
+}
+
+.hero-pattern {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.animated-badge {
+    animation: slideIn 0.5s ease-out;
+}
+
+.hero-content {
+    animation: fadeUp 0.8s ease-out;
+}
+
+.hero-image img {
+    transition: transform 0.3s ease;
+}
+
+.hero-image img:hover {
+    transform: scale(1.02);
+}
+
+@keyframes slideIn {
+    from { transform: translateY(-20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes fadeUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.btn {
+    transition: all 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+</style>
+

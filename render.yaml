@@ -1,0 +1,13 @@
+services:
+- type: web
+  runtime: python
+  name: portfolio-site
+  buildCommand: "./build.sh"
+  startCommand: "gunicorn Django_portfolio_site.wsgi:application"
+  envVars:
+  - key: SECRET_KEY
+    generateValue: true
+  - key: DEBUG
+    value: "false"
+  - key: PYTHON_VERSION
+    value: 3.11.0

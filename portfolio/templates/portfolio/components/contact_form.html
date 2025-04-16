@@ -1,0 +1,110 @@
+<div class="contact-form-container bg-white p-4 p-md-5 rounded-3 shadow-sm">
+    <h4 class="mb-4 text-center fw-bold">Let's Connect!</h4>
+    <form method="POST" action="{% url 'portfolio:send_email' %}" class="needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                required
+                placeholder="Enter your name"
+            />
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input
+                type="email"
+                class="form-control"
+                id="email"
+                name="email"
+                required
+                placeholder="Enter your email"
+            />
+        </div>
+        <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea 
+                class="form-control" 
+                id="message" 
+                name="message" 
+                rows="3" 
+                required
+            ></textarea>
+        </div>
+        <button id="contact-btn" type="submit" class="btn btn-success">
+            Send Message <i class="bi bi-send ms-2"></i>
+        </button>
+    </form>
+</div>
+
+<style>
+.contact-form-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-label {
+    font-weight: 500;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+.form-control {
+    border: 2px solid #e9ecef;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.form-control:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.15);
+}
+
+textarea.form-control {
+    min-height: 120px;
+    resize: vertical;
+}
+
+#contact-btn {
+    width: 100%;
+    padding: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+}
+
+#contact-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(25, 135, 84, 0.2);
+}
+
+/* Validation Styling */
+.form-control.is-invalid {
+    border-color: #dc3545;
+    background-image: none;
+}
+
+.form-control.is-valid {
+    border-color: #198754;
+    background-image: none;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .contact-form-container {
+        padding: 1.5rem !important;
+    }
+    
+    .form-control {
+        padding: 0.625rem;
+    }
+    
+    textarea.form-control {
+        min-height: 100px;
+    }
+}
+</style>
