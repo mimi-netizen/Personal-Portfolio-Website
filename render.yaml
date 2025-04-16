@@ -4,6 +4,10 @@ services:
   name: portfolio-site
   buildCommand: "./build.sh"
   startCommand: "gunicorn my_site.wsgi:application"
+  disk:
+    name: portfolio-data
+    mountPath: /opt/render/project/src/media
+    sizeGB: 1
   envVars:
   - key: SECRET_KEY
     generateValue: true
