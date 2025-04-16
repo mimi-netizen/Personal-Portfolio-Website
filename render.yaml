@@ -3,7 +3,7 @@ services:
   runtime: python
   name: portfolio-site
   buildCommand: "./build.sh"
-  startCommand: "gunicorn Django_portfolio_site.wsgi:application"
+  startCommand: "gunicorn my_site.wsgi:application"
   envVars:
   - key: SECRET_KEY
     generateValue: true
