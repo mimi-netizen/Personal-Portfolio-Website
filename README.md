@@ -2,6 +2,17 @@
 
 A modern, responsive portfolio website built with Django and Bootstrap. This website showcases my professional work, skills, and experience as a DevOps Engineer and Full-Stack Developer.
 
+## About
+A modern portfolio website with integrated Content Management System (CMS) built with Django and Bootstrap. This platform combines professional portfolio presentation with powerful content management capabilities, allowing dynamic updates to projects and content through an administrative interface.
+
+### CMS Features
+- Secure admin dashboard for content management
+- Dynamic project creation and editing
+- Integrated media management system
+- Role-based access control
+- Persistent storage for content and media
+- SEO-friendly content structure
+
 ## Features
 
 - Responsive design using Bootstrap 5
