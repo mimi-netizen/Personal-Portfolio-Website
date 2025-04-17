@@ -147,13 +147,17 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'  # Changed from CompressedManifestStaticFilesStorage
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+WHITENOISE_MAX_AGE = 31536000  # 1 year in seconds
+WHITENOISE_MIMETYPES = {
+    'image/png': 'image/png',
+    'image/jpeg': 'image/jpeg',
+    'image/jpg': 'image/jpg',
+}
 
 # Media files configuration
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'staticfiles/media')  # Changed to be inside staticfiles
-PROJECT_IMAGES_URL = MEDIA_URL + 'project_images/'
-PROJECT_IMAGES_ROOT = os.path.join(MEDIA_ROOT, 'project_images')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
